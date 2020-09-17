@@ -1,12 +1,14 @@
 package com.julioluis.springbootskillset.entities;
 
+import com.julioluis.springbootskillset.prototypes.TrainingProptotype;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 //@ApiModel(description = "User details")
 //@JsonFilter("UserFilter")
-public class User {
+public class User implements TrainingProptotype {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -97,5 +99,9 @@ public class User {
         this.status = status;
     }
 
+    @Override
+    public TrainingProptotype clone() throws CloneNotSupportedException {
+        return (User) super.clone();
+    }
 
 }
